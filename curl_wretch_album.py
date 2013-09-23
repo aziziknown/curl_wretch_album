@@ -17,7 +17,7 @@ def get_album_list(url,outfile,htmldir):
 		os.mkdir(htmldir+'/images')
 	fout = codecs.open(outfile,"w",encoding="utf-8")
 	parser = etree.HTMLParser()
-	req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
+	req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser",'Accept-Language':'zh-TW'})
 	stream = urllib2.urlopen(req)
 	tree = etree.parse(stream,parser)
 	links = tree.xpath("//td/b/font[@class='small-c']/a")
@@ -76,7 +76,7 @@ def album_list2page_list(infile,outdir):
 			print tok[1]
 			fout = codecs.open("%s/%s.txt"%(outdir,tok[0].strip()),'w',encoding="utf-8")
 			fout.write("%s\n"%tok[1])
-			req = urllib2.Request(tok[1], headers={'User-Agent' : "Magic Browser"})
+			req = urllib2.Request(tok[1], headers={'User-Agent' : "Magic Browser",'Accept-Language':'zh-TW'})
 			stream = urllib2.urlopen(req)
 			tree = etree.parse(stream,parser)
 			links = tree.xpath("//td/center/font[@class='small-c']/a")
@@ -100,7 +100,7 @@ def page_list2photo_list(infile,outfile,htmldir):
 		line = line.strip()
 		if len(line)>0:
 			print line
-			req = urllib2.Request(line, headers={'User-Agent' : "Magic Browser"})
+			req = urllib2.Request(line, headers={'User-Agent' : "Magic Browser",'Accept-Language':'zh-TW'})
 			stream = urllib2.urlopen(req)
 			tree = etree.parse(stream,parser)
 			links = tree.xpath("//td/b/font[@class='small-e']/a")
@@ -154,7 +154,7 @@ def page_list2photo_list(infile,outfile,htmldir):
 
 def curl_photo(url,htmldir):
 	parser = etree.HTMLParser()
-	req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
+	req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser",'Accept-Language':'zh-TW'})
 	stream = urllib2.urlopen(req)
 	tree = etree.parse(stream,parser)
 
