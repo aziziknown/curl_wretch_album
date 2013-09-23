@@ -3,7 +3,7 @@
 
 a simple python script for backup wretch album
 
-## Usage: 
+### Usage: 
 
 ```python curl_wretch_album.py your_wretch_id [path_to_put_your_backup]```
 
