@@ -224,7 +224,6 @@ def curl_photo(url,htmldir):
 if __name__ == '__main__':
 	
 	if len(sys.argv)<2:
-		#wretch_url = 'http://www.wretch.cc/album/known'
 		print 'usage: python curl_wretch_album.py your_wretch_id [path_to_put_your_backup]'
 	elif len(sys.argv)<3:
 		htmlroot = 'wretch'
@@ -255,9 +254,4 @@ if __name__ == '__main__':
 				fout.write("%s,%s,%s,%s\n"%(out['photo_id'],out['photo_url'],out['photo_title'],out['photo_desc']))
 				time.sleep(1)
 		fout.close()
-
-
-#	curl_photo('http://www.wretch.cc/album/show.php?i=known&b=3&f=1106279422&p=0&sp=0','../public-html/wretch/album02')
-
-
 
