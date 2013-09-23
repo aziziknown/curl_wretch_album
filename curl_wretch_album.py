@@ -56,6 +56,10 @@ def get_album_list(url,outfile,htmldir):
 				os.mkdir(htmldir+'/js')
 			os.system("wget -O %s/js/%s %s"%(htmldir,fn,url))
 		sc.set('src','js/%s'%fn)
+	
+	scripts= tree.xpath("//script")
+	for sc in scripts:
+		sc.text=''
 		
 	tree.write(htmldir+'/index.htm')
 
@@ -144,6 +148,10 @@ def page_list2photo_list(infile,outfile,htmldir):
 						os.mkdir(htmldir+'/../js')
 					os.system("wget -O %s/../js/%s %s"%(htmldir,fn,url))
 				sc.set('src','../js/%s'%fn)
+			
+			scripts= tree.xpath("//script")
+			for sc in scripts:
+				sc.text=''
 
 			tree.write(htmldir+'/page%d.htm'%page)
 			if page==1:
@@ -217,6 +225,10 @@ def curl_photo(url,htmldir):
 				os.mkdir(htmldir+'/../js')
 			os.system("wget -O %s/../js/%s %s"%(htmldir,fn,url))
 		sc.set('src','../js/%s'%fn)
+	
+	scripts= tree.xpath("//script")
+	for sc in scripts:
+		sc.text=''
 
 	tree.write('%s/photo%s.htm'%(htmldir,photoNo))
 	return out
